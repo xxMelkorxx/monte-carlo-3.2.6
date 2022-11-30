@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace monte_carlo_2._3._6
+namespace monte_carlo
 {
     static class Program
     {

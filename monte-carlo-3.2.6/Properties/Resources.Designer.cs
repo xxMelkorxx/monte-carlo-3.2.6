@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace monte_carlo_2._3._6.Properties
+namespace monte_carlo.Properties
 {
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
@@ -42,7 +42,7 @@ namespace monte_carlo_2._3._6.Properties
                 if ((resourceMan == null))
                 {
                     global::System.Resources.ResourceManager temp =
-                        new global::System.Resources.ResourceManager("monte_carlo_2._3._6.Properties.Resources", typeof(Resources).Assembly);
+                        new global::System.Resources.ResourceManager("monte_carlo.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
 
