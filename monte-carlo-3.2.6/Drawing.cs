@@ -16,8 +16,8 @@ public class Drawing
         var bitmap = new Bitmap(pB.Width, pB.Height);
         _graphics = Graphics.FromImage(bitmap);
         _graphics.SmoothingMode = SmoothingMode.AntiAlias;
-        _graphics.TranslateTransform(0, pB.Height);
-        _graphics.Clear(Color.Black);
+        _graphics.TranslateTransform(pB.Width / 2, pB.Height / 2);
+        Clear();
 			
         // Вычисление коэффициентов преобразование.
         _alpha = pB.Width / (x2 - x1);
@@ -25,6 +25,11 @@ public class Drawing
 
         pB.Image = bitmap;
     }
+
+    public void Clear()
+    {
+		_graphics.Clear(Color.FromArgb(64, 64, 64));
+	}
 
     /// <summary>
     /// Преобразует мировые координаты в координаты окна (пиксели).
@@ -70,13 +75,18 @@ public class Drawing
     /// <param name="height"></param>
     private void DrawEllipse(Color color, double x, double y, double width, double height)
     {
-        var pen = new Pen(Color.Black);
+        var pen = new Pen(color);
         _graphics.DrawEllipse(pen, OutX(x) - OutX(width) / 2, OutY(y) - OutY(height) / 2, OutX(width), OutY(height));
     }
 
-    public void DrawParticles(double radius, List<Particle> particles)
+    public void DrawNuclearReactor(double radius)
     {
-        DrawEllipse(Color.Red, -radius, radius, 2 * radius, 2 * radius);
-        particles.ForEach(p => DrawFillEllipse(Color.White, p.Position.X, p.Position.Y, 0.01, 0.01d));
+		DrawFillEllipse(Color.Black, 0, 0, 2 * radius, 2 * radius);
+		DrawEllipse(Color.Red, 0, 0, 2 * radius, 2 * radius);
+	}
+
+	public void DrawParticles(double radius, List<Vector2D> particles)
+    {
+        particles.ForEach(p => DrawFillEllipse(Color.White, p.X, p.Y, radius, radius));
     }
 }

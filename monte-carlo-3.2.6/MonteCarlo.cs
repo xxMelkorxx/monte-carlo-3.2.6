@@ -8,32 +8,30 @@ namespace monte_carlo
 {
     public class MonteCarlo
     {
-        private int CountParticles => _particles.Count;
-        private int _initCountParticles;
-        private int _countEjectedParticles;
-        private int _countAbsorbedParticles;
-        private List<Particle> _particles;
-
-        private double _radius;
-        private double _lambda;
-
         /// <summary>
         /// Вероятность рассеяния.
         /// </summary>
-        public double Ps { get; set; }
+        public double Ps => 1 - Pa - Pd;
 
-        /// <summary>
-        /// Вероятность поглощения.
-        /// </summary>
-        public double Pa { get; set; }
+		/// <summary>
+		/// Вероятность поглощения.
+		/// </summary>
+		public double Pa { get; set; }
 
-        /// <summary>
-        /// Вероятность деления.
-        /// </summary>
-        public double Pd => 1d - Ps - Pa;
+		/// <summary>
+		/// Вероятность деления.
+		/// </summary>
+		public double Pd { get; set; }
 
+		public List<Vector2D> Particles;
+		public int CountParticles => Particles.Count;
+		public int CountEjectedParticles;
+		public int CountAbsorbedParticles;
+
+		public int _initCountParticles;
+        private double _radius;
+        private double _lambda;
         private Random _random;
-
         private const double Pi2 = 2 * Math.PI;
 
         public MonteCarlo(int countParticles, double radius)
@@ -43,13 +41,11 @@ namespace monte_carlo
             _lambda = 1;
 
             _random = new Random(DateTime.Now.Millisecond);
-            _particles = new List<Particle>();
+			Particles = new List<Vector2D>();
             for (var i = 0; i < _initCountParticles; i++)
             {
                 var rnd = 2 * Math.PI * _random.NextDouble();
-                _particles.Add(new Particle(
-                    new Vector2D(Math.Cos(rnd), Math.Sin(rnd)) * _radius,
-                    Pi2 * _random.NextDouble()));
+                Particles.Add(new Vector2D(Math.Cos(rnd), Math.Sin(rnd)) * _random.NextDouble() * _radius);
             }
         }
 
@@ -58,50 +54,42 @@ namespace monte_carlo
         /// </summary>
         public void MonteCarloStep()
         {
-            for (var i = 0; i < _particles.Count; i++)
+            var initCount = Particles.Count;
+
+			for (var i = 0; i < initCount; i++)
             {
-                var p = _particles[i];
                 var rScenario = _random.NextDouble();
                 
                 if (rScenario <= Ps)
                 {
-                    var rScater = _lambda * _random.NextDouble();
-                    var rAngle = Pi2 * _random.NextDouble();
-                    p.Position += rScater * new Vector2D(Math.Cos(rAngle), Math.Sin(rAngle));
-                    p.SpeedDirection = rAngle;
-                    if (p.Position.SquaredMagnitude() >= _radius * _radius)
+                    var r1 = Pi2 * _random.NextDouble();
+                    var r2 = Pi2 * _random.NextDouble();
+					var l = -_lambda * Math.Log(r1);
+                    Particles[i] += l * new Vector2D(Math.Cos(r2), Math.Sin(r2));
+                    if (Particles[i].SquaredMagnitude() >= _radius * _radius)
                     {
-                        _particles.Remove(p);
-                        _countEjectedParticles++;
+						Particles.RemoveAt(i);
+                        CountEjectedParticles++;
                         i--;
+                        initCount--;
                     }
                 }
                 else if (rScenario >= Ps && rScenario <= Ps + Pa)
                 {
-                    _particles.Remove(p);
-                    _countAbsorbedParticles++;
+                    Particles.RemoveAt(i);
+                    CountAbsorbedParticles++;
                     i--;
+                    initCount--;
                 }
                 else if (rScenario > Ps + Pa)
                 {
                     for (var j = 0; j < 2; j++)
-                        _particles.Add(new Particle(p.Position, Pi2 * _random.NextDouble()));
-                    _particles.Remove(p);
+                        Particles.Add(Particles[i]);
+					Particles.RemoveAt(i);
                     i--;
+                    initCount--;
                 }
             }
-        }
-    }
-
-    public class Particle
-    {
-        public Vector2D Position;
-        public double SpeedDirection;
-
-        public Particle(Vector2D position, double speedDirection)
-        {
-            Position = position;
-            SpeedDirection = speedDirection;
         }
     }
 }
