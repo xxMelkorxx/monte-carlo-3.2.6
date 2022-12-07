@@ -45,6 +45,7 @@
 			System.Windows.Forms.Label label_countEjectedParticles;
 			System.Windows.Forms.Label label_countBoom;
 			System.Windows.Forms.Label label2;
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.nud_Rl = new System.Windows.Forms.NumericUpDown();
 			this.nud_No = new System.Windows.Forms.NumericUpDown();
 			this.nud_intervalTimer = new System.Windows.Forms.NumericUpDown();
@@ -479,6 +480,7 @@
 			// 
 			this.pB_model.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
 			this.pB_model.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pB_model.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pB_model.ErrorImage")));
 			this.pB_model.Location = new System.Drawing.Point(16, 16);
 			this.pB_model.Margin = new System.Windows.Forms.Padding(4);
 			this.pB_model.Name = "pB_model";

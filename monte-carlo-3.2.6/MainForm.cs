@@ -86,7 +86,7 @@ namespace monte_carlo
 			{
 				label_statusReactor.ForeColor = Color.Red;
 				label_statusReactor.Text = "Реактор уничтожен!";
-				pB_model.ImageLocation = "boom.png";
+				pB_model.Image = pB_model.ErrorImage;
 
 				OnClickButtonStart(null, null);
 				button_start.Enabled = false;
