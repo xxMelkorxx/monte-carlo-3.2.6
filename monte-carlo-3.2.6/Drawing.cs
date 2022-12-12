@@ -73,20 +73,24 @@ public class Drawing
     /// <param name="y"></param>
     /// <param name="width"></param>
     /// <param name="height"></param>
-    private void DrawEllipse(Color color, double x, double y, double width, double height)
+    private void DrawEllipse(Color color, double x, double y, double width, double height, float widthPen = 1f)
     {
-        var pen = new Pen(color);
+        var pen = new Pen(color, widthPen);
         _graphics.DrawEllipse(pen, OutX(x) - OutX(width) / 2, OutY(y) - OutY(height) / 2, OutX(width), OutY(height));
     }
-
-    public void DrawNuclearReactor(double radius)
+        
+	public void DrawParticles(double radius, List<Vector2D> particles, int countBoom)
     {
+        Color color;
+        if (particles.Count < countBoom * 0.5)
+            color = Color.White;
+        else if (particles.Count > countBoom * 0.8)
+            color = Color.Red;
+        else color = Color.Gold;
+
 		DrawFillEllipse(Color.Black, 0, 0, 2 * radius, 2 * radius);
-		DrawEllipse(Color.Red, 0, 0, 2 * radius, 2 * radius);
-	}
+		DrawEllipse(color, 0, 0, 2 * radius, 2 * radius, 2f);
 
-	public void DrawParticles(double radius, List<Vector2D> particles)
-    {
-        particles.ForEach(p => DrawFillEllipse(Color.White, p.X, p.Y, radius, radius));
+		particles.ForEach(p => DrawFillEllipse(Color.White, p.X, p.Y, radius * 0.01, radius * 0.01));
     }
 }
