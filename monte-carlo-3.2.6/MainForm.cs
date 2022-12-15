@@ -52,6 +52,7 @@ namespace monte_carlo
 			chart_countEjectedParticles.Series[0].Points.AddXY(_countStep, _monteCarlo.CountEjectedParticles);
 			chart_countAbsorbedParticles.Series[0].Points.AddXY(_countStep, _monteCarlo.CountAbsorbedParticles);
 
+			_data = string.Empty;
 			_data += string.Format("{0} {1} {2} {3}\n", _countStep, _monteCarlo.CountParticles, _monteCarlo.CountEjectedParticles, _monteCarlo.CountAbsorbedParticles);
 
 			button_start.Enabled = true;
