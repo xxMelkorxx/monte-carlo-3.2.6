@@ -45,7 +45,6 @@
 			System.Windows.Forms.Label label_countEjectedParticles;
 			System.Windows.Forms.Label label_countBoom;
 			System.Windows.Forms.Label label2;
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			System.Windows.Forms.GroupBox gB_chartParticles;
 			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
 			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
@@ -58,8 +57,10 @@
 			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
 			System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
 			System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.nud_Rl = new System.Windows.Forms.NumericUpDown();
 			this.nud_No = new System.Windows.Forms.NumericUpDown();
+			this.checkBox_addCond = new System.Windows.Forms.CheckBox();
 			this.nud_intervalTimer = new System.Windows.Forms.NumericUpDown();
 			this.nud_mks = new System.Windows.Forms.NumericUpDown();
 			this.nud_Pd = new System.Windows.Forms.NumericUpDown();
@@ -68,18 +69,17 @@
 			this.tB_countStep = new System.Windows.Forms.TextBox();
 			this.tB_countAbsorbedParticles = new System.Windows.Forms.TextBox();
 			this.tB_countEjectedParticles = new System.Windows.Forms.TextBox();
+			this.chart_сountParticles = new System.Windows.Forms.DataVisualization.Charting.Chart();
+			this.chart_countEjectedParticles = new System.Windows.Forms.DataVisualization.Charting.Chart();
+			this.chart_countAbsorbedParticles = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.pB_model = new System.Windows.Forms.PictureBox();
 			this.button_start = new System.Windows.Forms.Button();
 			this.timer_mks = new System.Windows.Forms.Timer(this.components);
 			this.button_createModel = new System.Windows.Forms.Button();
 			this.groupBox_statusReactor = new System.Windows.Forms.GroupBox();
-			this.nud_countBoom = new System.Windows.Forms.NumericUpDown();
-			this.progressBar_statusReactor = new System.Windows.Forms.ProgressBar();
 			this.label_statusReactor = new System.Windows.Forms.Label();
-			this.chart_сountParticles = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			this.chart_countEjectedParticles = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			this.chart_countAbsorbedParticles = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			this.checkBox_addCond = new System.Windows.Forms.CheckBox();
+			this.progressBar_statusReactor = new System.Windows.Forms.ProgressBar();
+			this.nud_countBoom = new System.Windows.Forms.NumericUpDown();
 			this.button_saveData = new System.Windows.Forms.Button();
 			groupBox_paramsModel = new System.Windows.Forms.GroupBox();
 			label_Rl = new System.Windows.Forms.Label();
@@ -108,15 +108,15 @@
 			((System.ComponentModel.ISupportInitialize)(this.nud_Pd)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nud_Pa)).BeginInit();
 			groupBox_outputData.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pB_model)).BeginInit();
-			this.groupBox_statusReactor.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nud_countBoom)).BeginInit();
 			gB_chartParticles.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.chart_сountParticles)).BeginInit();
 			groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.chart_countEjectedParticles)).BeginInit();
 			groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.chart_countAbsorbedParticles)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pB_model)).BeginInit();
+			this.groupBox_statusReactor.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nud_countBoom)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox_paramsModel
@@ -227,6 +227,17 @@
 			groupBox_paramsSimulation.TabIndex = 3;
 			groupBox_paramsSimulation.TabStop = false;
 			groupBox_paramsSimulation.Text = "Параметры симуляции";
+			// 
+			// checkBox_addCond
+			// 
+			this.checkBox_addCond.AutoSize = true;
+			this.checkBox_addCond.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.checkBox_addCond.Location = new System.Drawing.Point(17, 148);
+			this.checkBox_addCond.Name = "checkBox_addCond";
+			this.checkBox_addCond.Size = new System.Drawing.Size(299, 21);
+			this.checkBox_addCond.TabIndex = 12;
+			this.checkBox_addCond.Text = "Дополнительное условие при делении";
+			this.checkBox_addCond.UseVisualStyleBackColor = true;
 			// 
 			// label_intervalTimer
 			// 
@@ -504,112 +515,6 @@
 			label2.Text = "Условие взрыва реактора:";
 			label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// pB_model
-			// 
-			this.pB_model.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-			this.pB_model.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pB_model.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pB_model.ErrorImage")));
-			this.pB_model.Location = new System.Drawing.Point(16, 16);
-			this.pB_model.Margin = new System.Windows.Forms.Padding(4);
-			this.pB_model.Name = "pB_model";
-			this.pB_model.Size = new System.Drawing.Size(600, 600);
-			this.pB_model.TabIndex = 0;
-			this.pB_model.TabStop = false;
-			// 
-			// button_start
-			// 
-			this.button_start.Enabled = false;
-			this.button_start.Location = new System.Drawing.Point(622, 673);
-			this.button_start.Margin = new System.Windows.Forms.Padding(4);
-			this.button_start.Name = "button_start";
-			this.button_start.Size = new System.Drawing.Size(322, 30);
-			this.button_start.TabIndex = 1;
-			this.button_start.Text = "Старт";
-			this.button_start.UseVisualStyleBackColor = true;
-			this.button_start.Click += new System.EventHandler(this.OnClickButtonStart);
-			// 
-			// timer_mks
-			// 
-			this.timer_mks.Tick += new System.EventHandler(this.OnTickTimerMKS);
-			// 
-			// button_createModel
-			// 
-			this.button_createModel.Location = new System.Drawing.Point(622, 635);
-			this.button_createModel.Margin = new System.Windows.Forms.Padding(4);
-			this.button_createModel.Name = "button_createModel";
-			this.button_createModel.Size = new System.Drawing.Size(322, 30);
-			this.button_createModel.TabIndex = 5;
-			this.button_createModel.Text = "Создать модель";
-			this.button_createModel.UseVisualStyleBackColor = true;
-			this.button_createModel.Click += new System.EventHandler(this.OnClickButtonCreateModel);
-			// 
-			// groupBox_statusReactor
-			// 
-			this.groupBox_statusReactor.Controls.Add(this.label_statusReactor);
-			this.groupBox_statusReactor.Controls.Add(this.progressBar_statusReactor);
-			this.groupBox_statusReactor.Controls.Add(label2);
-			this.groupBox_statusReactor.Controls.Add(label_countBoom);
-			this.groupBox_statusReactor.Controls.Add(this.nud_countBoom);
-			this.groupBox_statusReactor.Location = new System.Drawing.Point(623, 283);
-			this.groupBox_statusReactor.Name = "groupBox_statusReactor";
-			this.groupBox_statusReactor.Size = new System.Drawing.Size(322, 137);
-			this.groupBox_statusReactor.TabIndex = 6;
-			this.groupBox_statusReactor.TabStop = false;
-			this.groupBox_statusReactor.Text = "Состояние реактора";
-			// 
-			// nud_countBoom
-			// 
-			this.nud_countBoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.nud_countBoom.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-			this.nud_countBoom.Location = new System.Drawing.Point(241, 49);
-			this.nud_countBoom.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-			this.nud_countBoom.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			this.nud_countBoom.Name = "nud_countBoom";
-			this.nud_countBoom.Size = new System.Drawing.Size(75, 25);
-			this.nud_countBoom.TabIndex = 12;
-			this.nud_countBoom.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.nud_countBoom.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-			this.nud_countBoom.ValueChanged += new System.EventHandler(this.OnValueChangedCountBoom);
-			// 
-			// progressBar_statusReactor
-			// 
-			this.progressBar_statusReactor.BackColor = System.Drawing.Color.Black;
-			this.progressBar_statusReactor.ForeColor = System.Drawing.Color.Red;
-			this.progressBar_statusReactor.Location = new System.Drawing.Point(6, 105);
-			this.progressBar_statusReactor.Name = "progressBar_statusReactor";
-			this.progressBar_statusReactor.Size = new System.Drawing.Size(310, 25);
-			this.progressBar_statusReactor.TabIndex = 16;
-			// 
-			// label_statusReactor
-			// 
-			this.label_statusReactor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.label_statusReactor.BackColor = System.Drawing.Color.Black;
-			this.label_statusReactor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.label_statusReactor.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label_statusReactor.ForeColor = System.Drawing.Color.Lime;
-			this.label_statusReactor.Location = new System.Drawing.Point(6, 77);
-			this.label_statusReactor.Name = "label_statusReactor";
-			this.label_statusReactor.Size = new System.Drawing.Size(310, 25);
-			this.label_statusReactor.TabIndex = 17;
-			this.label_statusReactor.Text = "В норме";
-			this.label_statusReactor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
 			// gB_chartParticles
 			// 
 			gB_chartParticles.Controls.Add(this.chart_сountParticles);
@@ -752,16 +657,111 @@
 			this.chart_countAbsorbedParticles.TabIndex = 8;
 			this.chart_countAbsorbedParticles.Text = "chart_countAbsorbedParticles";
 			// 
-			// checkBox_addCond
+			// pB_model
 			// 
-			this.checkBox_addCond.AutoSize = true;
-			this.checkBox_addCond.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.checkBox_addCond.Location = new System.Drawing.Point(17, 148);
-			this.checkBox_addCond.Name = "checkBox_addCond";
-			this.checkBox_addCond.Size = new System.Drawing.Size(299, 21);
-			this.checkBox_addCond.TabIndex = 12;
-			this.checkBox_addCond.Text = "Дополнительное условие при делении";
-			this.checkBox_addCond.UseVisualStyleBackColor = true;
+			this.pB_model.BackColor = System.Drawing.Color.White;
+			this.pB_model.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pB_model.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pB_model.ErrorImage")));
+			this.pB_model.Location = new System.Drawing.Point(16, 16);
+			this.pB_model.Margin = new System.Windows.Forms.Padding(4);
+			this.pB_model.Name = "pB_model";
+			this.pB_model.Size = new System.Drawing.Size(600, 600);
+			this.pB_model.TabIndex = 0;
+			this.pB_model.TabStop = false;
+			// 
+			// button_start
+			// 
+			this.button_start.Enabled = false;
+			this.button_start.Location = new System.Drawing.Point(622, 673);
+			this.button_start.Margin = new System.Windows.Forms.Padding(4);
+			this.button_start.Name = "button_start";
+			this.button_start.Size = new System.Drawing.Size(322, 30);
+			this.button_start.TabIndex = 1;
+			this.button_start.Text = "Старт";
+			this.button_start.UseVisualStyleBackColor = true;
+			this.button_start.Click += new System.EventHandler(this.OnClickButtonStart);
+			// 
+			// timer_mks
+			// 
+			this.timer_mks.Tick += new System.EventHandler(this.OnTickTimerMKS);
+			// 
+			// button_createModel
+			// 
+			this.button_createModel.Location = new System.Drawing.Point(622, 635);
+			this.button_createModel.Margin = new System.Windows.Forms.Padding(4);
+			this.button_createModel.Name = "button_createModel";
+			this.button_createModel.Size = new System.Drawing.Size(322, 30);
+			this.button_createModel.TabIndex = 5;
+			this.button_createModel.Text = "Создать модель";
+			this.button_createModel.UseVisualStyleBackColor = true;
+			this.button_createModel.Click += new System.EventHandler(this.OnClickButtonCreateModel);
+			// 
+			// groupBox_statusReactor
+			// 
+			this.groupBox_statusReactor.Controls.Add(this.label_statusReactor);
+			this.groupBox_statusReactor.Controls.Add(this.progressBar_statusReactor);
+			this.groupBox_statusReactor.Controls.Add(label2);
+			this.groupBox_statusReactor.Controls.Add(label_countBoom);
+			this.groupBox_statusReactor.Controls.Add(this.nud_countBoom);
+			this.groupBox_statusReactor.Location = new System.Drawing.Point(623, 283);
+			this.groupBox_statusReactor.Name = "groupBox_statusReactor";
+			this.groupBox_statusReactor.Size = new System.Drawing.Size(322, 137);
+			this.groupBox_statusReactor.TabIndex = 6;
+			this.groupBox_statusReactor.TabStop = false;
+			this.groupBox_statusReactor.Text = "Состояние реактора";
+			// 
+			// label_statusReactor
+			// 
+			this.label_statusReactor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label_statusReactor.BackColor = System.Drawing.Color.Black;
+			this.label_statusReactor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.label_statusReactor.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label_statusReactor.ForeColor = System.Drawing.Color.Lime;
+			this.label_statusReactor.Location = new System.Drawing.Point(6, 77);
+			this.label_statusReactor.Name = "label_statusReactor";
+			this.label_statusReactor.Size = new System.Drawing.Size(310, 25);
+			this.label_statusReactor.TabIndex = 17;
+			this.label_statusReactor.Text = "В норме";
+			this.label_statusReactor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// progressBar_statusReactor
+			// 
+			this.progressBar_statusReactor.BackColor = System.Drawing.Color.Black;
+			this.progressBar_statusReactor.ForeColor = System.Drawing.Color.Red;
+			this.progressBar_statusReactor.Location = new System.Drawing.Point(6, 105);
+			this.progressBar_statusReactor.Name = "progressBar_statusReactor";
+			this.progressBar_statusReactor.Size = new System.Drawing.Size(310, 25);
+			this.progressBar_statusReactor.TabIndex = 16;
+			// 
+			// nud_countBoom
+			// 
+			this.nud_countBoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.nud_countBoom.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			this.nud_countBoom.Location = new System.Drawing.Point(241, 49);
+			this.nud_countBoom.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.nud_countBoom.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.nud_countBoom.Name = "nud_countBoom";
+			this.nud_countBoom.Size = new System.Drawing.Size(75, 25);
+			this.nud_countBoom.TabIndex = 12;
+			this.nud_countBoom.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.nud_countBoom.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+			this.nud_countBoom.ValueChanged += new System.EventHandler(this.OnValueChangedCountBoom);
 			// 
 			// button_saveData
 			// 
@@ -807,15 +807,15 @@
 			((System.ComponentModel.ISupportInitialize)(this.nud_Pa)).EndInit();
 			groupBox_outputData.ResumeLayout(false);
 			groupBox_outputData.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pB_model)).EndInit();
-			this.groupBox_statusReactor.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.nud_countBoom)).EndInit();
 			gB_chartParticles.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.chart_сountParticles)).EndInit();
 			groupBox1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.chart_countEjectedParticles)).EndInit();
 			groupBox2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.chart_countAbsorbedParticles)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pB_model)).EndInit();
+			this.groupBox_statusReactor.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.nud_countBoom)).EndInit();
 			this.ResumeLayout(false);
 
         }

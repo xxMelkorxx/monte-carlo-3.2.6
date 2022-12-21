@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -28,7 +27,7 @@ public class Drawing
 
     public void Clear()
     {
-		_graphics.Clear(Color.FromArgb(64, 64, 64));
+		_graphics.Clear(Color.White);
 	}
 
     /// <summary>
@@ -83,14 +82,14 @@ public class Drawing
     {
         Color color;
         if (particles.Count < countBoom * 0.5)
-            color = Color.White;
+            color = Color.Black;
         else if (particles.Count > countBoom * 0.8)
             color = Color.Red;
         else color = Color.Gold;
 
-		DrawFillEllipse(Color.Black, 0, 0, 2 * radius, 2 * radius);
+		DrawFillEllipse(Color.White, 0, 0, 2 * radius, 2 * radius);
 		DrawEllipse(color, 0, 0, 2 * radius, 2 * radius, 2f);
 
-		particles.ForEach(p => DrawFillEllipse(Color.White, p.X, p.Y, radius * 0.01, radius * 0.01));
+		particles.ForEach(p => DrawFillEllipse(Color.Black, p.X, p.Y, radius * 0.02, radius * 0.02));
     }
 }

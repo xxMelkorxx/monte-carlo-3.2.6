@@ -41,6 +41,8 @@ namespace monte_carlo
 			tB_countEjectedParticles.Text = "0";
 			tB_countAbsorbedParticles.Text = "0";
 
+			progressBar_statusReactor.Value = _monteCarlo.CountParticles;
+
 			label_statusReactor.ForeColor = Color.Lime;
 			label_statusReactor.Text = "В норме";
 
